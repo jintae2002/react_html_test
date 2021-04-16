@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react_test</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="mydiv0"></div>
+    <script type="text/babel">
+        class Gume extends React.Component 
+        {
+            handleClick = () => {alert('데이터가 추가되었습니다')}
+
+            render()
+            {
+                let mystyle = {
+                    color:"white",
+                    backgroundColor:"black",
+                    fontFamily:'fantasy',
+                    fontSize: 25
+                }
+                let ecommerce0 = "Data1 : Super-Store"
+
+                return (
+                    <ul style={mystyle} >
+                        <li>멘토 : 박병민 대표님</li>
+                        <li>멘티 : 박진태</li>
+                        <li>멘티 : 김종보</li>
+                        <li style={{color:'red'}}>{this.props.myf0}</li>
+                        <li>{ecommerce0}</li>
+                        <button onClick={this.handleClick }>데이터추가</button>
+                    </ul>
+                )
+            }
+        }
+
+        class App extends React.Component
+        {  
+            constructor(props)
+            {
+                super(props)
+                this.state={
+                    name:'팀명',
+                    phone:'의미',
+                    src1 : '/image/mysql.png'
+                }
+
+                this.handleClick= this.handleClick.bind(this)
+            }
+
+            handleClick()
+            {
+                this.setState( {name:'구메구메', phone:'남모르게 틈틈이', src1 : '/image/aws.png'})
+            }
+            
+            render()
+            {
+                return (
+                    <div>
+                        <h1>{this.props.elist0}</h1>
+                        <h2>{this.state.name}</h2>
+                        <h3>{this.state.phone}</h3>
+                        <Gume myf0="Laplace x Medici"/>
+                        <img src = {this.state.src1} />
+                        <button onClick={ this.handleClick }>클릭</button>
+
+                    </div>
+                )
+            }
+        }
+        App.defaultProps = {elist0 : 'elist0'}
+
+
+        ReactDOM.render( <App elist0="이커머스 분석 프로젝트"/>, document.getElementById('mydiv0'))
+    </script>
+</body>
+</html>
